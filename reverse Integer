@@ -1,0 +1,39 @@
+class Solution {
+    public int reverse(int x) {
+
+        String str=String.valueOf(x);
+        Stack<Character>s=new Stack<>();
+
+        for(int i=0;i<str.length();i++)
+        {
+            char ch=str.charAt(i);
+
+            if(ch!='-')
+
+            s.push(ch);
+        }
+
+        StringBuilder sb=new StringBuilder();
+
+        while(!s.isEmpty())
+        {
+            sb.append(s.pop());
+        }
+        int ans=0;
+
+        try
+        {
+            ans = Integer.parseInt(sb.toString());
+        } catch (NumberFormatException numberFormatException)
+        {
+            return ans;
+        }
+
+        if(x<0)
+        {
+            ans*=-1;
+        }
+        
+        return ans;
+    }
+}
