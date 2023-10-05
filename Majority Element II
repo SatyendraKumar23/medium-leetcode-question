@@ -1,0 +1,73 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        
+        int n=nums.length;
+
+        ArrayList<Integer>ll=new ArrayList<>();
+
+        HashMap<Integer,Integer>map=new HashMap<>();
+
+        int min=(int)(n/3)+1;
+
+        for(int i=0;i<n;i++)
+        {
+            if(map.containsKey(nums[i]))
+            {
+                map.put(nums[i],map.get(nums[i])+1);
+            }
+            else{
+                map.put(nums[i],1);
+            }
+
+            if(map.get(nums[i])==min)
+            {
+                ll.add(nums[i]);
+            }
+
+            if(ll.size()==2)
+            {
+                break;
+            }
+        }
+
+        return ll;
+    }
+}
+
+
+
+//second method
+
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+
+        int n=nums.length;
+        int count=0;
+
+        HashSet<Integer>set=new HashSet<>();
+
+        for(int i=0;i<n;i++)
+        {
+            count=0;
+
+            for(int j=0;j<n;j++)
+            {
+                if(nums[i]==nums[j])
+                {
+                    count++;
+                }
+            }
+
+            if(count>(n/3))
+            {
+                set.add(nums[i]);
+            }
+        }
+
+        List<Integer>ll=new ArrayList<>(set);
+
+        
+        return ll;
+        
+    }
+}
